@@ -3929,6 +3929,17 @@
     };
     const da = new DynamicAdapt("max");
     da.init();
+    $(document).ready((function() {
+        $("#menu").on("click", "a", (function(event) {
+            document.documentElement.classList.remove("menu-open");
+            document.documentElement.classList.remove("lock");
+            event.preventDefault();
+            var id = $(this).attr("href"), top = $(id).offset().top;
+            $("body,html").animate({
+                scrollTop: top
+            }, 1500);
+        }));
+    }));
     window["FLS"] = true;
     isWebp();
     menuInit();
